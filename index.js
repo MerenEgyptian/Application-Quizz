@@ -1,7 +1,7 @@
-let localStoragePrenom = "";
-//console.log(localStoragePrenom),
-localStorage.setItem('prenom', localStoragePrenom);
-localStoragePrenom = localStorage.getItem('prenom');
+let storagePrenom = "";
+//console.log(storagePrenom),
+localStorage.setItem('prenom', storagePrenom);
+storagePrenom = localStorage.getItem('prenom');
 
 document
   .getElementById("prenom")
@@ -10,34 +10,39 @@ document
     document
       .getElementById("prenom")
       .innerText = prenom.target.value;
-    localStoragePrenom = prenom.target.value;
-    //console.log(localStoragePrenom);
+    storagePrenom = prenom.target.value;
+    //console.log(storagePrenom);
     //console.log(window.location.href)
   });
 
 
 const commencer = document.querySelector('.btn');
 
-const nonPassif = {
-  passif: false
-};
+//const nonPassif = {
+//  passif: false
+//};
 
-commencer.addEventListener('click', nonePassiveHandler, nonPassif);
+commencer.addEventListener('click', nonePassiveHandler)//, nonPassif);
 
 function nonePassiveHandler(event) {
   event.preventDefault();
   // event.stopPropagation();
   //console.log("Cliqué !");
-  //console.log(localStoragePrenom);
+  //console.log(storagePrenom);
 
-  if (localStoragePrenom === "") {
+  if (storagePrenom === "") {
     return;
   }
-  else if (localStoragePrenom != "") {
-    //console.log(localStoragePrenom),
-    localStorage.setItem('prenom', localStoragePrenom);
+  else if (storagePrenom != "") {
+    //console.log(storagePrenom),
+    localStorage.setItem('prenom', storagePrenom);
     var prenom = localStorage.getItem('prenom');
     //console.log('prenom', prenom);
-    location.href = "file:///C:/Users/Meren/Desktop/Eval-main/quizz.html";
+
+    if (!prenom) {
+      console.log("Oups c'est vide");
+    }
+
+    location.href = "Exams.html#page-top";
   }
 }
