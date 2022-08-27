@@ -58,6 +58,12 @@ promiseHydraTitle
                 .getElementById("app")
                 //.appendChild(a)
                 .append(title, cardHeader.appendChild(a), card, cardBody);
+
+            document.getElementsByClassName("container")[i]
+                .style.cssText = "width: 70%; margin-left: 12.5em"
+
+            document.getElementById("app")
+                .style.cssText = "width: 45%; margin-left: 15em; color: teal"
         }
     })
     .catch(function (err) {
