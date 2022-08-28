@@ -4,11 +4,11 @@ localStorage.setItem('prenom', storagePrenom);
 storagePrenom = localStorage.getItem('prenom');
 
 document
-  .getElementById("prenom")
-  .addEventListener("input", function (prenom) {
+  .getElementById('prenom')
+  .addEventListener('input', function (prenom) {
     //console.log(e.target.value),
     document
-      .getElementById("prenom")
+      .getElementById('prenom')
       .innerText = prenom.target.value;
     storagePrenom = prenom.target.value;
     //console.log(storagePrenom);
@@ -40,9 +40,9 @@ function nonePassiveHandler(event) {
     //console.log('prenom', prenom);
 
     if (!prenom) {
-      console.log("Oups c'est vide");
+      console.log(`Oups c'est vide`);
     }
 
-    location.href = "Exams.html#page-top";
+    location.href = 'Exams.html#page-top';
   }
 }
