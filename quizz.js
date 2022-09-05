@@ -1,5 +1,6 @@
 var prenom = localStorage.getItem('prenom');
 var storageUrl = localStorage.getItem('storageUrl');
+var storageReponse = ""
 
 const promiseExamen = fetch(storageUrl)
 
@@ -47,7 +48,7 @@ promiseExamen
 
       formRadio.append(title, cardHeader, ul);
 
-      var nombreReponse = Object.keys(element.options).length;                 //
+      var nombreReponse = Object.keys(element.options).length;                 // Recherche nombre de réponses par questions
 
 
       for (let j = 1; j <= nombreReponse; j++) {
@@ -59,20 +60,36 @@ promiseExamen
         ul.appendChild(li)
 
         cardBody.textContent = element.options[j].option
-        li.innerText = li.innerText + cardBody.textContent
+        li.innerText = li.innerText + cardBody.textContent                     // Affectation à l'élémnet 'li' des réponses texte
 
 
         const input = document.createElement("input");
         li.append(input);
 
-        input.setAttribute("type", "radio");
-        input.setAttribute("name", `reponse${id}`); //console.log(id);         //
-        input.setAttribute("value", element.options[j].isCorrect);
-        input.setAttribute("style", "padding-right: 10em");
+        input.setAttribute("type", "radio");                                   // Ajoute un nouvel attribut "type" à l'élément "input"
+        input.setAttribute("name", `reponse${id}`); //console.log(id);         // Ajoute un nouvel attribut "name" à l'élément "input"
+        input.setAttribute("value", element.options[j].isCorrect);             // Ajoute un nouvel attribut "value" à l'élément "input"
+        input.setAttribute("style", "padding-right: 10em");                    // Ajoute un nouvel attribut "style" à l'élément "input"
 
-        input.value = element.options[j].isCorrect;
+        //input.value = element.options[j].isCorrect;
         //console.log(input.value);
 
+        var form = document.querySelector('form');
+
+        form.addEventListener('click', function (event) {
+
+          var data = new FormData(form);
+          var output = "";
+
+          for (const entry of data) {
+
+            //output = entry[0] + " = " + entry[1] + "\r";
+
+            storageReponse = entry[1];
+            localStorage.setItem(entry[0], storageReponse);
+          };
+
+        }, false);
 
         //formRadio.appendChild(hiddenField);
 
@@ -94,26 +111,7 @@ promiseExamen
         //formRadio.style.cssText = 'padding-right: 5em'
 
       }
-
-
     }
-
-    var valeurInput = document.querySelector('input[name=' + `reponse${id}` + ']:checked').value;
-    console.log(valeurInput)
-
-    var form = document.querySelector('form');
-    //var log = document.querySelector('#app');
-
-    form.addEventListener('submit', function (event) {
-      var data = new FormData(form);
-      var output = "";
-      for (const entry of data) {
-        output = entry[0] + "=" + entry[1] + "\r"; console.log(output)
-      };
-      console.log = output;
-      event.preventDefault();
-    }, false);
-
   })
 
   .catch(function (err) {
