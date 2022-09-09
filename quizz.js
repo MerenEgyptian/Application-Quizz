@@ -1,9 +1,7 @@
-var prenom = localStorage.getItem('prenom');
 var storageUrl = localStorage.getItem('storageUrl');
-var storageReponse = ""
 
-const promiseExamen = fetch(storageUrl)
 
+const promiseExamen = fetch(storageUrl);
 
 promiseExamen
   .then(function (resultat) {
@@ -14,7 +12,7 @@ promiseExamen
 
   .then(function (valeurs) {
 
-    const examens = valeurs['question'];                                       // Récupération des données au format JSON et attribution à une constante
+    const examens = valeurs['question'];                                                                          // Récupération des données au format JSON et attribution à une constante
 
     const titreExamen = valeurs.title;
     titreExamen.textContent = titreExamen;
@@ -22,14 +20,15 @@ promiseExamen
 
     document
       .querySelector('h1')
-      .append(titreExamen)
+      .append(titreExamen);
 
-    var formRadio = document.createElement('form');                            // Création de l'élément form
+
+
+    var formRadio = document.createElement('form');                                                               // Création de l'élément form
     formRadio.setAttribute('action', " ");
 
     document.getElementById('app')
       .appendChild(formRadio);
-
 
     for (let i = 0; i < examens.length; i++) {
 
@@ -46,54 +45,70 @@ promiseExamen
 
       var ul = document.createElement('ul');
 
+
       formRadio.append(title, cardHeader, ul);
 
-      var nombreReponse = Object.keys(element.options).length;                 // Recherche nombre de réponses par questions
 
+
+      var nombreReponse = Object.keys(element.options).length;                                                    // Recherche nombre de réponses par questions
 
       for (let j = 1; j <= nombreReponse; j++) {
 
-        const cardBody = document.createElement('div')
-        cardBody.classList.add('card-body')
+        const cardBody = document.createElement('div');
 
-        var li = document.createElement('li')
-        ul.appendChild(li)
+        const text = document.createElement("p");
 
-        cardBody.textContent = element.options[j].option
-        li.innerText = li.innerText + cardBody.textContent                     // Affectation à l'élémnet 'li' des réponses texte
+        var li = document.createElement('li');
+        ul.appendChild(li);
 
+        cardBody.textContent = element.options[j].option;
+        li.innerText = li.innerText + cardBody.textContent;                                                        // Affectation à l'élémnet 'li' des réponses texte
+        //cardBody.textContent.append(p);
 
         const input = document.createElement("input");
         li.append(input);
 
-        input.setAttribute("type", "radio");                                   // Ajoute un nouvel attribut "type" à l'élément "input"
-        input.setAttribute("name", `reponse${id}`); //console.log(id);         // Ajoute un nouvel attribut "name" à l'élément "input"
-        input.setAttribute("value", element.options[j].isCorrect);             // Ajoute un nouvel attribut "value" à l'élément "input"
-        input.setAttribute("style", "padding-right: 10em");                    // Ajoute un nouvel attribut "style" à l'élément "input"
+        input.setAttribute("type", "radio");                                                                      // Ajoute un nouvel attribut "type" à l'élément "input"
+        input.setAttribute("name", `reponse${id}`);                                                               // Ajoute un nouvel attribut "name" à l'élément "input"
+        input.setAttribute("value", element.options[j].option + " " + element.options[j].isCorrect);              // Ajoute un nouvel attribut "value" à l'élément "input"
+        input.setAttribute("style", "padding-right: 10em");                                                       // Ajoute un nouvel attribut "style" à l'élément "input"
 
-        //input.value = element.options[j].isCorrect;
-        //console.log(input.value);
+
 
         var form = document.querySelector('form');
 
-        form.addEventListener('click', function (event) {
+        form.addEventListener('click', function () {
 
           var data = new FormData(form);
-          var output = "";
+          var outputName = "";
+          var outputBoolean = "";
+          var outputReponseTexte = "";
+          var tampon = "";
+          var score = 0;
 
           for (const entry of data) {
+            tampon = entry[1];
+            outputName = entry[0];
+            outputBoolean = tampon; outputBoolean = tampon.slice(-5);
+            outputReponseTexte = tampon; outputReponseTexte = tampon.slice(0, -5);
 
-            //output = entry[0] + " = " + entry[1] + "\r";
+            if (outputBoolean == "false") {
+              outputReponseTexte = outputReponseTexte + " " + "Mauvaise réponse";
+            }
 
-            storageReponse = entry[1];
-            localStorage.setItem(entry[0], storageReponse);
+            else if (outputBoolean == " true") {
+              outputReponseTexte = outputReponseTexte + " " + "Bonne réponse";
+              score = score + 5;
+            }
+
+            localStorage.setItem(outputName, outputReponseTexte);
+            resultaScore = score + ' sur 20';
+            localStorage.setItem("resultatScore", resultaScore);
+            localStorage.setItem("id", id);
+
           };
-
         }, false);
 
-        //formRadio.appendChild(hiddenField);
-
-        //li.insertAdjacentHTML('afterBegin', '<input name="reponse" type="radio" value=' + `${j}` + '>');
 
         //document.getElementsByClassName("container")[i]
         //.style.cssText = "width: 70%; margin-left: 12.5em";
@@ -105,13 +120,27 @@ promiseExamen
         //document.getElementById('.app')
         //.style.cssText = 'width: auto; margin-left: 0.5em; color: teal; font-size: .7em';
 
-        //document.querySelectorAll('#card-button > ul.card-body > li')
-        //li.style.cssText = 'list-style-type: none; padding-bottom: 1em'
-        //input.style.cssText = 'float: left; margin-top: .15em'
-        //formRadio.style.cssText = 'padding-right: 5em'
+        //document.querySelectorAll('#card-button > ul.card-body > li');
+        //li.style.cssText = 'list-style-type: none; padding-bottom: 1em';
+        //input.style.cssText = 'float: left; margin-top: .15em';
+        //formRadio.style.cssText = 'padding-right: 5em';
 
       }
     }
+
+    var a = document.createElement('a');
+    a.title = "Envoyer";
+    a.href = `result.html#page-top`;
+    a.addEventListener('click', function () {
+
+    })
+
+    document.getElementById('app'),
+      a.insertAdjacentHTML('beforeEnd', '<button type="submit" class="btn btn-primary">Envoyer</button>');
+
+    document
+      .getElementById('app')
+      .appendChild(a);
   })
 
   .catch(function (err) {
