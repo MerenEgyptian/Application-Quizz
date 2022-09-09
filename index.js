@@ -1,25 +1,24 @@
 let storagePrenom = "";
-//console.log(storagePrenom),
 localStorage.setItem('prenom', storagePrenom);
-storagePrenom = localStorage.getItem('prenom');
+
 
 document
   .getElementById('prenom')
   .addEventListener('input', function (prenom) {
-    //console.log(e.target.value),
+
     document
       .getElementById('prenom')
       .innerText = prenom.target.value;
     storagePrenom = prenom.target.value;
-    //console.log(storagePrenom);
-    //console.log(window.location.href)
+
+    //console.log(window.location.href);
   });
 
 
 const commencer = document.querySelector('.btn');
 
 //const nonPassif = {
-//  passif: false
+//  passif: false;
 //};
 
 commencer.addEventListener('click', nonePassiveHandler)//, nonPassif);
@@ -44,5 +43,5 @@ function nonePassiveHandler(event) {
     }
 
     location.href = 'Exams.html#page-top';
-  }
+  };
 }
