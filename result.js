@@ -1,21 +1,30 @@
+var nombreReponse = localStorage.getItem('nombreReponse');
 var id = localStorage.getItem('id');
 var reponse = "";
 
 
-for (let i = 1; i <= id; i++) {
-
+for (let i = 0; i <= id; i++) {
     reponse = localStorage.getItem(`reponse${i}`);
 
-    const resultatReponse = document.createElement('h6');
-    resultatReponse.textContent = reponse;
+    for (let j = 2; j < nombreReponse; j++) {
 
-    const cardBody = document.createElement('div');
-    cardBody.classList.add('card-body')
+        if (reponse != null) {
 
-    document.getElementById('app')
-        .append(cardBody)
-    document.getElementById('app')
-        .appendChild(resultatReponse)
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body')
+
+            const resultatReponse = document.createElement('h6');
+            resultatReponse.textContent = reponse
+
+            document.getElementById('app')
+                .append(resultatReponse, cardBody);
+        }
+        else if (reponse == null) {
+
+            break;
+
+        }
+    }
 
 }
 

@@ -43,6 +43,7 @@ promiseExamen
       cardHeader.setAttribute('id', 'card-button');
       cardHeader.classList.add('card-header');
 
+
       var ul = document.createElement('ul');
 
 
@@ -56,14 +57,18 @@ promiseExamen
 
         const cardBody = document.createElement('div');
 
-        const text = document.createElement("p");
-
         var li = document.createElement('li');
+
         ul.appendChild(li);
 
+        //console.log(cardBody.textContent)
+
         cardBody.textContent = element.options[j].option;
-        li.innerText = li.innerText + cardBody.textContent;                                                        // Affectation à l'élémnet 'li' des réponses texte
-        //cardBody.textContent.append(p);
+        //li.innerText = li.innerText + cardBody.textContent;                                                     // Affectation à l'élémnet 'li' des réponses texte
+
+        const p = document.createElement("p");
+        p.textContent = cardBody.textContent;
+        li.appendChild(p)
 
         const input = document.createElement("input");
         li.append(input);
@@ -72,7 +77,6 @@ promiseExamen
         input.setAttribute("name", `reponse${id}`);                                                               // Ajoute un nouvel attribut "name" à l'élément "input"
         input.setAttribute("value", element.options[j].option + " " + element.options[j].isCorrect);              // Ajoute un nouvel attribut "value" à l'élément "input"
         input.setAttribute("style", "padding-right: 10em");                                                       // Ajoute un nouvel attribut "style" à l'élément "input"
-
 
 
         var form = document.querySelector('form');
@@ -104,26 +108,31 @@ promiseExamen
             localStorage.setItem(outputName, outputReponseTexte);
             resultaScore = score + ' sur 20';
             localStorage.setItem("resultatScore", resultaScore);
+            localStorage.setItem("nombreReponse", nombreReponse);
             localStorage.setItem("id", id);
 
           };
         }, false);
 
 
+        document.getElementById('app')
+          .style.cssText = 'width: auto; margin-left: -1em; color: teal; font-size: .7em';
+
         //document.getElementsByClassName("container")[i]
         //.style.cssText = "width: 70%; margin-left: 12.5em";
 
-
-        document.getElementsByClassName('card-header')[i]
+        document.getElementsByClassName('card-header')[i]                                                         // Ajout d'une marge
           .style.marginBottom = '1em';
 
-        //document.getElementById('.app')
-        //.style.cssText = 'width: auto; margin-left: 0.5em; color: teal; font-size: .7em';
+        let h5 = document.querySelectorAll("h5")[i];
+        h5.style.cssText = 'font-size: 1.4em; margin: 0 1.5em 0 1.5em';
 
-        //document.querySelectorAll('#card-button > ul.card-body > li');
-        //li.style.cssText = 'list-style-type: none; padding-bottom: 1em';
-        //input.style.cssText = 'float: left; margin-top: .15em';
-        //formRadio.style.cssText = 'padding-right: 5em';
+        document.querySelectorAll('#card-button > ul.card-body > li');
+        li.style.cssText = 'list-style-type: none; padding-bottom: 1em';
+        input.style.cssText = 'float: left; margin: -2.8em 0 0 -0.5em';
+
+        document.querySelectorAll('p')[i]
+        p.style.cssText = 'margin-left: 1.5em';
 
       }
     }
@@ -136,7 +145,8 @@ promiseExamen
     })
 
     document.getElementById('app'),
-      a.insertAdjacentHTML('beforeEnd', '<button type="submit" class="btn btn-primary">Envoyer</button>');
+      a.insertAdjacentHTML('beforeEnd', '<button type="submit" class="btn btn-primary">Envoyer</button>')
+      a.style.cssText = 'margin: 5em 0 0 11em';
 
     document
       .getElementById('app')

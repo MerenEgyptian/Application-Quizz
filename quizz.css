@@ -1,0 +1,16 @@
+.app {
+ width: auto;
+ margin-left: 10.5em;
+ color: teal;
+ font-size: .7em
+}
+
+li {
+ list-style-type: none;
+ padding-bottom: 1em;
+}
+
+hiddenField {
+ /*float: left;*/
+ margin-top: .15em;
+}
