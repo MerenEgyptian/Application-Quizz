@@ -42,6 +42,9 @@ texteScore.textContent = 'votre note est de: ' + resultatScore.textContent;
 document.getElementById('app')
     .append(cardHeader, texteScore);
 
+document.getElementById('app')
+    .style.cssText = 'width: auto; margin-left: -1em; color: teal; font-size: .7em';
+
 
 for (let z = 1; z <= id; z++) {
 
