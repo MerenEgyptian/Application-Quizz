@@ -1,16 +1,47 @@
-.app {
- width: auto;
- margin-left: 10.5em;
- color: teal;
- font-size: .7em
+.reponses .card-header {
+    margin-bottom: 1em;
 }
 
-li {
- list-style-type: none;
- padding-bottom: 1em;
+.reponses > form > h5 {
+    margin: 0 1.5em 0 1.5em;
+    font-size: 1.4em;
 }
 
-hiddenField {
- /*float: left;*/
- margin-top: .15em;
+.reponses > form > ul > li {
+    margin-left: -1em;
+    padding-bottom: 1em;
+    width: auto;
+    font-size: .7em;
+    color: teal;
+    list-style-type: none;
+}
+
+.reponses > form > ul > li > input[type=radio] {
+    float: left;
+    margin: -2.8em 0 0 -1.5em;
+}
+
+.reponses > form > ul > li > p {
+    margin-left: 1.5em;
+}
+
+@media (min-width: 1200px) {
+    
+    .container{
+    width: 60%;
+    margin-left: 18em;
+    }
+
+    .reponses > form > ul > li {
+        font-size: 1.5em;
+    }
+
+    .reponses > form > ul > li > input[type=radio] {
+        margin: -1.6em 0 0 0em;
+    }
+
+    .reponses > form > h5 {
+        font-size: 2em;
+    }
+
 }
