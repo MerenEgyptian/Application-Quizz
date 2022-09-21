@@ -28,6 +28,8 @@ promiseExamen
     formRadio.setAttribute('action', " ");
 
     document.getElementById('app')
+    .classList.add("reponses")
+    document.getElementById('app')
       .appendChild(formRadio);
 
     for (let i = 0; i < examens.length; i++) {
@@ -97,11 +99,11 @@ promiseExamen
             outputReponseTexte = tampon; outputReponseTexte = tampon.slice(0, -5);
 
             if (outputBoolean == "false") {
-              outputReponseTexte = outputReponseTexte + " " + "Mauvaise réponse";
+              outputReponseTexte = outputReponseTexte + "..............................." + "Mauvaise réponse";
             }
 
             else if (outputBoolean == " true") {
-              outputReponseTexte = outputReponseTexte + " " + "Bonne réponse";
+              outputReponseTexte = outputReponseTexte + "..............................." + "Bonne réponse";
               score = score + 5;
             }
 
@@ -115,24 +117,24 @@ promiseExamen
         }, false);
 
 
-        document.getElementById('app')
-          .style.cssText = 'width: auto; margin-left: -1em; color: teal; font-size: .7em';
+        //document.getElementById('app')
+        //.style.cssText = 'width: auto; margin-left: -1em; color: teal; font-size: .7em';
 
         //document.getElementsByClassName("container")[i]
         //.style.cssText = "width: 70%; margin-left: 12.5em";
 
-        document.getElementsByClassName('card-header')[i]                                                         // Ajout d'une marge
-          .style.marginBottom = '1em';
+        //document.getElementsByClassName('card-header')[i]                                                         // Ajout d'une marge
+        // .style.marginBottom = '1em';
 
-        let h5 = document.querySelectorAll("h5")[i];
-        h5.style.cssText = 'font-size: 1.4em; margin: 0 1.5em 0 1.5em';
+        //let h5 = document.querySelectorAll("h5")[i];
+        //h5.style.cssText = 'font-size: 1.4em; margin: 0 1.5em 0 1.5em';
 
-        document.querySelectorAll('#card-button > ul.card-body > li');
-        li.style.cssText = 'list-style-type: none; padding-bottom: 1em';
-        input.style.cssText = 'float: left; margin: -2.8em 0 0 -0.5em';
+        //document.querySelectorAll('#card-button > ul.card-body > li');
+        //li.style.cssText = 'list-style-type: none; padding-bottom: 1em';
+        //input.style.cssText = 'float: left; margin: -2.8em 0 0 -0.5em';
 
-        document.querySelectorAll('p')[i]
-        p.style.cssText = 'margin-left: 1.5em';
+        //document.querySelectorAll('p')[i]
+        //p.style.cssText = 'margin-left: 1.5em';
 
       }
     }
@@ -146,7 +148,7 @@ promiseExamen
 
     document.getElementById('app'),
       a.insertAdjacentHTML('beforeEnd', '<button type="submit" class="btn btn-primary">Envoyer</button>')
-      a.style.cssText = 'margin: 5em 0 0 11em';
+    //a.style.cssText = 'margin: 5em 0 0 11em';
 
     document
       .getElementById('app')
