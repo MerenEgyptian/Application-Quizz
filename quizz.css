@@ -25,6 +25,11 @@
     margin-left: 1.5em;
 }
 
+#app > a {
+    margin: 5em 0 0 11em;
+}
+
+
 @media (min-width: 1200px) {
     
     .container{
